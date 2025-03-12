@@ -38,17 +38,6 @@
                 },
                 {
                     "name": "",
-                    "id": "b593084a-eed8-4829-8144-99d3c4e969fc",
-                    "path": "<Keyboard>/anyKey",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Right_Flipper",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "0ec0e2ff-3bc4-4e63-b11d-096873f78257",
                     "path": "<Keyboard>/d",
                     "interactions": "",

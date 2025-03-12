@@ -1,11 +1,9 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class FlipperController : MonoBehaviour
+public class FlipperManager : MonoBehaviour
 {
     public HingeJoint2D rFlipper, lFlipper;
-
-    public string active;
 
     //Llamando al Input System
     public InputSystem_Actions inputAction;
@@ -37,33 +35,15 @@ public class FlipperController : MonoBehaviour
         inputAction = new InputSystem_Actions();
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-        //Depending on the button pressive, it will activate the useMotor of the respective flipper
-        if (active == "Right")
-        {
-            Debug.Log("Paso el IF Right");
-            //rFlipper.useMotor = true;
-        }
-        else if (active == "Left")
-        {
-            Debug.Log("Paso el IF Left");
-            //lFlipper.useMotor = false;
-        }
-    }
-
     //move.ReadValue<Vector2D>(); Esto es si Action Type del Input es un Value
 
     public void RightFlipperButton(InputAction.CallbackContext context)
     {
-        Debug.Log("La funcion Right NO JALA");
-        active = "Right";
+        rFlipper.useMotor = true;
     }
 
     public void LeftFlipperButton(InputAction.CallbackContext context)
     {
-        Debug.Log("La funcion Left NO JALA");
-        active = "Left";
+        lFlipper.useMotor = true;
     }
 }
