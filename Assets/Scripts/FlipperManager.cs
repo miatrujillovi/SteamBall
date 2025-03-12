@@ -12,14 +12,13 @@ public class FlipperManager : MonoBehaviour
     //Subscribing...
     private void OnEnable()
     {
-        Debug.Log("Llamada");
         Right_Flipper = inputAction.Player.Right_Flipper;
         Right_Flipper.Enable();
-        Right_Flipper.performed += RightFlipperButton;
+        Right_Flipper.performed += RightFlipperButton; //For Buttons
 
         Left_Flipper = inputAction.Player.Left_Flipper;
         Left_Flipper.Enable();
-        Left_Flipper.performed += LeftFlipperButton;
+        Left_Flipper.performed += LeftFlipperButton; //For Buttons
     }
 
     //Desubscribing...

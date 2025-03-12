@@ -108,6 +108,15 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Ball"",
+                    ""type"": ""Button"",
+                    ""id"": ""1594a3ba-36fe-4b9c-aab3-978359726cb3"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -130,6 +139,17 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
                     ""action"": ""Left_Flipper"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f936abd2-6d1a-4656-878d-85a1f0c389e4"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Ball"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -719,6 +739,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Right_Flipper = m_Player.FindAction("Right_Flipper", throwIfNotFound: true);
         m_Player_Left_Flipper = m_Player.FindAction("Left_Flipper", throwIfNotFound: true);
+        m_Player_Ball = m_Player.FindAction("Ball", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -814,6 +835,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_Right_Flipper;
     private readonly InputAction m_Player_Left_Flipper;
+    private readonly InputAction m_Player_Ball;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -833,6 +855,10 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/Left_Flipper".
         /// </summary>
         public InputAction @Left_Flipper => m_Wrapper.m_Player_Left_Flipper;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/Ball".
+        /// </summary>
+        public InputAction @Ball => m_Wrapper.m_Player_Ball;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -865,6 +891,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Left_Flipper.started += instance.OnLeft_Flipper;
             @Left_Flipper.performed += instance.OnLeft_Flipper;
             @Left_Flipper.canceled += instance.OnLeft_Flipper;
+            @Ball.started += instance.OnBall;
+            @Ball.performed += instance.OnBall;
+            @Ball.canceled += instance.OnBall;
         }
 
         /// <summary>
@@ -882,6 +911,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Left_Flipper.started -= instance.OnLeft_Flipper;
             @Left_Flipper.performed -= instance.OnLeft_Flipper;
             @Left_Flipper.canceled -= instance.OnLeft_Flipper;
+            @Ball.started -= instance.OnBall;
+            @Ball.performed -= instance.OnBall;
+            @Ball.canceled -= instance.OnBall;
         }
 
         /// <summary>
@@ -1196,6 +1228,13 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnLeft_Flipper(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ball" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnBall(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.
