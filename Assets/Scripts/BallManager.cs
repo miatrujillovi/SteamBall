@@ -9,7 +9,7 @@ public class BallManager : MonoBehaviour
     public InputSystem_Actions inputAction;
     public InputAction Ball;
 
-    private int ballCounter;
+    public static int ballCounter;
 
     private void OnEnable()
     {
@@ -32,20 +32,23 @@ public class BallManager : MonoBehaviour
     //Function that detects which ball should be throw next
     void BallDetector()
     {
-        if (ballCounter == 1)
+        if (ballCounter == 1 && GameManager.ballOnField == false)
         {
             BallThrower(ballsArray[0]);
             ballCounter++;
+            GameManager.ballOnField = true;
         } 
-        else if (ballCounter == 2)
+        else if (ballCounter == 2 && GameManager.ballOnField == false)
         {
             BallThrower(ballsArray[1]);
             ballCounter++;
+            GameManager.ballOnField = true;
         } 
-        else if (ballCounter == 3)
+        else if (ballCounter == 3 && GameManager.ballOnField == false)
         {
             BallThrower(ballsArray[2]);
             ballCounter++;
+            GameManager.ballOnField = true;
         }
     }
 
