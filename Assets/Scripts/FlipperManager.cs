@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -39,10 +40,18 @@ public class FlipperManager : MonoBehaviour
     public void RightFlipperButton(InputAction.CallbackContext context)
     {
         rFlipper.useMotor = true;
+        StartCoroutine(RetreatFlipper(rFlipper));
     }
 
     public void LeftFlipperButton(InputAction.CallbackContext context)
     {
         lFlipper.useMotor = true;
+        StartCoroutine(RetreatFlipper(lFlipper));
+    }
+
+    IEnumerator RetreatFlipper(HingeJoint2D _flipper)
+    {
+        yield return new WaitForSeconds(0.1f);
+        _flipper.useMotor = false;
     }
 }
