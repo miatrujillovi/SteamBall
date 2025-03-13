@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     {
         if (collision.CompareTag("Ball"))
         {
-            if (BallManager.ballCounter == 3)
+            if (BallManager.ballCounter == 4)
             {
                 ballOnField = false;
                 collision.gameObject.SetActive(false);
